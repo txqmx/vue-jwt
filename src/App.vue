@@ -1,12 +1,26 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/">首页</router-link> |
+      <router-link to="/login">登录</router-link> |
+      <router-link to="/profile">个人中心</router-link>
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+import { getTest } from './api';
+
+export default {
+  mounted() {
+    getTest().then((data) => {
+      // 防止请求会多次调用拦截器
+      console.log(data);
+    });
+  },
+};
+</script>
 
 <style>
 #app {
